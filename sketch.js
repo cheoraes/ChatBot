@@ -84,10 +84,9 @@ function setup() {
 		    console.log('voiceReady');
 					speech.setVoice(7);
 		  }
-			canvas.mousePressed(saludo);
-				function saludo(){
-				speech.speak('hola');
-				speech.speak('estoy preparada para hablar');
+			canvas.mousePressed(mp);
+				function mp(){
+				console.log('mousePressed');
 			}
 }
 
