@@ -86,7 +86,8 @@ function setup() {
 		  }
 			canvas.mousePressed(mp);
 				function mp(){
-				console.log('mousePressed');
+				console.log('vuelve a escuchar');
+				startListening();
 			}
 }
 
