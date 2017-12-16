@@ -6,22 +6,39 @@ var database;
 var canvas;
 var drawing = [];
 
+var goals ;
+
 function setup() {
 		//CANVAS
 	  canvas = createCanvas(200, 200);
+		// UI
+		/*const txtEmail = select('#txtEmail');
+		const txtPassword = select('#txtPassword');
+		const btnLogIn = select('#btnLogIn');
+		const btnLogOut = select('#btnLogOut');
+		const btnSignUp = select('#btnSignUp');*/
 
 		//FIREBASE
 		var config = {
-	    apiKey: "AIzaSyDZ8Na6cTMcQ1cH-dVCArDbdpLpXLzv81k",
-	    authDomain: "drawings-to-firebase.firebaseapp.com",
-	    databaseURL: "https://drawings-to-firebase.firebaseio.com",
-	    projectId: "drawings-to-firebase",
-	    storageBucket: "drawings-to-firebase.appspot.com",
-	    messagingSenderId: "1091105692743"
-	  };
+	    apiKey: "AIzaSyCbph7UizXm0Q90VqsIzaeF11HdIagbOPQ",
+	    authDomain: "login-5e273.firebaseapp.com",
+	    databaseURL: "https://login-5e273.firebaseio.com",
+	    projectId: "login-5e273",
+	    storageBucket: "login-5e273.appspot.com",
+	    messagingSenderId: "314551064700"
+  };
 	  firebase.initializeApp(config);
 		console.log(firebase);
 	  database = firebase.database();
+
+		function mp(){
+			/*const email = txtEmail.value();
+			const psw =	txtPassword.value();
+			const auth = firebase.auth();
+			auth.signInWithEmailAndPassword(email,psw);
+			promise.catch*/
+		}
+
 		/*var ref = database.ref('scores');
 		var data = {
 			name:"Jordi",
@@ -44,21 +61,75 @@ function setup() {
 	function gotSpeech(){
 		console.log(speechRec);
 		if(speechRec.resultValue){
-			let input = speechRec.resultString;
-			let reply = brain.reply("local-user", input);
-			speech.speak(reply);
-			console.log(reply);
+			let input = limpiar_caracteres_especiales(speechRec.resultString);
+			let reply = brain.reply("local-user", input).split('(comandos)');
+			console.log(reply[0])
+			// Hablar Texto
+			speech.speak(reply[0]);
+			// Ejecutar instrucciones
+			ejecutar(reply[1])
+			console.log(input);
+
 		}
+	}
+
+
+	 goals = {	saludo:{status:0},
+	 					};
+	function ejecutar(comandos){
+		let cmd = comandos.split(' ');
+		console.log(cmd[0])
+		switch(cmd[0]){
+			case 'update':
+				goals[cmd[1]].status=cmd[3]
+		}
+
+
+
+
+	}
+
+
+
+	function limpiar_caracteres_especiales(input){
+		input = input.replace('á','a');
+		input = input.replace('é','e');
+		input = input.replace('í','i');
+		input = input.replace('ó','o');
+		input = input.replace('ú','u');
+		console.log(input);
+		return input
 	}
 
 	// -------------
 	// brain
 	let brain = new RiveScript();
-	brain.loadFile("brain.rive", brainReady, brainError);
-	function brainReady() {
-			console.log('Chatbot ready!');
-			brain.sortReplies();
-		}
+
+
+
+
+	brain.loadFile("brain/begin.rive", null, brainError);
+
+	brain.loadFile("brain/saludo.rive", saludo, brainError);
+	 function saludo() {
+		 brain.sortReplies();
+	//  		console.log('Modulo de Saludo ON');
+	// 		brain.sortReplies();
+	// 		let reply = brain.reply('local-user',input)
+	// 		console.log(reply)
+	 	}
+
+	//brain.loadFile("brain/identidad.rive", identidad, brainError);
+
+	// function identidad() {
+	// 		console.log('Modulo de identidad ON');
+	// 		brain.sortReplies();
+	// 		let bot_name ="Linguo";
+	// 		let input = "set botname " + bot_name;
+	// 				console.log(input);
+	// 		let reply = brain.reply('local-user',input)
+	// 		console.log(reply)
+	// 	}*
 
 		function brainError() {
 		    console.log('Chatbot error!')
@@ -84,11 +155,8 @@ function setup() {
 		    console.log('voiceReady');
 					speech.setVoice(7);
 		  }
-			canvas.mousePressed(mp);
-				function mp(){
-				console.log('vuelve a escuchar');
-				startListening();
-			}
+			canvas.mousePressed(startListening);
+
 }
 
 
