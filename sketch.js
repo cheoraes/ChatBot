@@ -8,7 +8,27 @@ var drawing = [];
 
 var goals ;
 
+
+var playing = false;
+var fingers;
+var button;
+function toggleVid() {
+  if (playing) {
+    fingers.pause();
+    button.html('play');
+  } else {
+    fingers.loop();
+    button.html('pause');
+  }
+  playing = !playing;
+}
 function setup() {
+
+	fingers = createVideo(['videos/hablando.mp4']);
+   button = createButton('play');
+   button.mousePressed(toggleVid); // attach button listener
+
+
 		//CANVAS
 	  canvas = createCanvas(200, 200);
 		// UI
