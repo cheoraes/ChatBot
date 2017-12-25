@@ -8,12 +8,3 @@
 ! sub que tal     = como estas
 ! sub como va     = como estas
 ! sub como lo llevas = como estas
-
-
-
-+ *
-* <get saludo> == undefined => Es mejor saludar antes de hablar.
-- no se si te entiendo
-- no se me ocurre nada
-- casi te entiendo pero ... no
-- puedes quitarte el zapato de la boca para hablar

@@ -1,10 +1,37 @@
 // Chatbot's brain
 ! version = 2.0
 
-+ hola
++ [*] hola [*]
 - Hola(comandos)update saludo int 1 <set saludo=1>
 
-+ como estas
++ [*] como estas [*]
 - agusto como un arbusto, y tu(comandos)saludo 1 <set saludo=1>
 - mas feliz que una perdiz, y tu(comandos)saludo 1 <set saludo=1>
 - muy bien, y tu(comandos)saludo 1 <set saludo=1>
+
+
+//+ *
+//* <get saludo> == undefined => Es mejor saludar antes de hablar.
+
+
++ *
+- no se si te entiendo
+- no se me ocurre nada
+- casi te entiendo pero ... no
+- puedes quitarte el zapato de la boca para hablar
+
+
++ [*] cuentame un chiste [*]
+- Por que los patos no tienen amigos.Porque son muy antipaticos
+- Papa.por qué te casaste con mama.Tu tampoco te lo explicas. verdad hijo
+- Este vino.de dónde es.De Islandia. creo.en el envase pone Tetravrik.
+- Estan 2 cadaveres en el cementerio. y uno empieza a reírse. y dice.Ja.jaja.ja.jaja, me vivo de la risa
+- Mi novia me ha dejado una nota en la mesa que ponia. Me voy. no hay quimica.No la entiendo.si le han anulado la clase. para que va.
+- Amor mio, creo que podriamos tener otro hijo.Me parece bien, a mi tampoco me gusta el que tenemos ahora
+- Una pregunta. los vagos. vamos al infierno.O vienen a recogernos
+- Tio. sabias que adivino el futuro.Desde cuando.Desde el jueves que viene.
+- Manolo. que dia hace hoy.No tengo ni idea. con tanta niebla no veo nada.
+- A que te dedicas. Basicamente a respirar. No gano mucho. pero me da para vivir.
+- Que hijos tan charlatanes tiene. No. es solo uno. pero . muy nervioso
+- A ver Jaimito. si tengo cuarenta manzanas en una mano. y en la otra tengo cincuenta.que tengo en total.Las manos muy grandes.
+- Jaimito.dime dos pronombres.Quien.yo.Muy bien

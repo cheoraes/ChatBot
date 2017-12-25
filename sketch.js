@@ -65,13 +65,19 @@ function setup() {
 			let reply = brain.reply("local-user", input).split('(comandos)');
 			console.log(reply[0])
 			// Hablar Texto
-			speech.speak(reply[0]);
-			// Ejecutar instrucciones
+			frases = reply[0].split('.');
+
+			speech.speak(frases.shift());
+
+
 			ejecutar(reply[1])
 			console.log(input);
 
 		}
 	}
+
+
+
 
 
 	 goals = {	saludo:{status:0},
@@ -83,10 +89,6 @@ function setup() {
 			case 'update':
 				goals[cmd[1]].status=cmd[3]
 		}
-
-
-
-
 	}
 
 
@@ -148,7 +150,13 @@ function setup() {
 		  	background( 0,0, 0);
 		  }
 		  function endSpeaking() {
-				startListening();
+				if (frases.length>0){
+					speech.speak(frases.shift());
+				}
+					else{
+									startListening();
+				}
+
 		  }
 
 		  function voiceReady() {
