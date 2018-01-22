@@ -5,7 +5,7 @@
 var database;
 var canvas;
 var drawing = [];
-
+var video;
 var goals ;
 
 
@@ -23,7 +23,7 @@ var goals ;
 //   playing = !playing;
 // }
  function setup() {
-
+video = createCapture(VIDEO);
 	// fingers = createVideo(['videos/hablando.mp4']);
   //  button = createButton('play');
   //  button.mousePressed(toggleVid); // attach button listener
